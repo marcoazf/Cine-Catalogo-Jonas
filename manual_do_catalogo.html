@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manual do Catálogo - CineCatalog Elo</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: system-ui, -apple-system, sans-serif; background: #0F172A; color: #E2E8F0; line-height: 1.6; padding: 2rem; max-width: 1000px; margin: 0 auto; }
+  h1 { font-size: 1.5rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; background: linear-gradient(135deg,#fff,#60A5FA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.25rem; }
+  h2 { font-size: 1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; color: #60A5FA; margin: 1.5rem 0 0.5rem; }
+  h3 { font-size: 0.85rem; font-weight: 700; color: #94A3B8; margin: 1rem 0 0.25rem; }
+  p, li { font-size: 0.85rem; color: #CBD5E1; margin-bottom: 0.5rem; }
+  ul, ol { padding-left: 1.5rem; margin-bottom: 1rem; }
+  li { margin-bottom: 0.35rem; }
+  code { background: rgba(59,130,246,0.1); padding: 0.1rem 0.3rem; border-radius: 0.25rem; font-size: 0.8rem; color: #93C5FD; }
+  .section { background: rgba(30,41,59,0.5); border: 1px solid rgba(59,130,246,0.15); border-radius: 1rem; padding: 1.25rem; margin-bottom: 1rem; }
+  .badge { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 0.4rem; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; background: rgba(59,130,246,0.15); color: #60A5FA; border: 1px solid rgba(59,130,246,0.2); }
+  .badge-orange { background: rgba(255,107,0,0.15); color: #FF8C00; border-color: rgba(255,107,0,0.2); }
+  .badge-green { background: rgba(34,197,94,0.15); color: #22C55E; border-color: rgba(34,197,94,0.2); }
+  hr { border: none; border-top: 1px solid rgba(59,130,246,0.1); margin: 1.5rem 0; }
+  kbd { background: #1E293B; border: 1px solid #334155; border-radius: 0.25rem; padding: 0.1rem 0.4rem; font-size: 0.75rem; font-family: inherit; }
+  .tip { background: rgba(255,107,0,0.08); border-left: 3px solid #FF6B00; padding: 0.75rem 1rem; border-radius: 0.5rem; margin: 0.75rem 0; font-size: 0.8rem; color: #FED7AA; }
+  table { width: 100%; border-collapse: collapse; margin: 0.75rem 0; font-size: 0.8rem; }
+  th { background: rgba(59,130,246,0.1); color: #93C5FD; padding: 0.4rem 0.6rem; text-align: left; border-bottom: 1px solid rgba(59,130,246,0.2); font-weight: 700; text-transform: uppercase; font-size: 0.65rem; letter-spacing: 0.05em; }
+  td { padding: 0.4rem 0.6rem; border-bottom: 1px solid rgba(59,130,246,0.05); color: #CBD5E1; }
+  .tag { display: inline-block; background: rgba(59,130,246,0.1); padding: 0.05rem 0.4rem; border-radius: 0.3rem; font-size: 0.65rem; color: #93C5FD; }
+</style>
+</head>
+<body>
+  <h1>Manual do Catálogo — CineCatalog Elo</h1>
+  <p style="color:#64748B;font-size:0.75rem;margin-bottom:1.5rem">Versão 25.9 — Guia completo de funcionalidades e dicas de uso</p>
+
+  <div class="section">
+    <h2>1. Visão Geral</h2>
+    <p>O <strong>CineCatalog Elo</strong> é um sistema premium de gerenciamento de acervo pessoal de filmes, séries e estreias. Desenvolvido em JavaScript puro (SPA) e empacotado com Electron, ele funciona 100% offline e armazena todos os dados localmente no navegador.</p>
+    <p><span class="badge">v25.9</span> <span class="badge">Electron</span> <span class="badge">JS SPA</span> <span class="badge badge-green">Offline First</span></p>
+    
+    <h3>Características principais:</h3>
+    <ul>
+      <li>Cadastro completo de filmes e séries com capa, sinopse, elenco, diretor, género, estrelas e status</li>
+      <li>Sistema de estreias com datas de lançamento e notificações automáticas</li>
+      <li>Pesquisa booleana com <code>+</code> para combinar termos</li>
+      <li>Múltiplos modos de visualização: carrossel, grelha, marquee e dinâmico</li>
+      <li>Backup e restauro em formato JSON</li>
+      <li>Auto-salvamento e sugestão diária de filmes/séries</li>
+      <li>Suporte a Smart TVs com navegação por controle remoto (DPAD)</li>
+      <li>Reprodução de mídia no player padrão do sistema operacional</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>2. Barra Superior — Navegação Principal</h2>
+    <table>
+      <tr><th>Ícone / Botão</th><th>Função</th><th>Atalho</th></tr>
+      <tr><td>+ NOVO</td><td>Abrir modal de cadastro (Filmes/Séries/Estreias)</td><td>—</td></tr>
+      <tr><td>Filmes / Séries / Estreias</td><td>Alternar entre as abas principais</td><td><kbd>Ctrl+1</kbd> / <kbd>Ctrl+2</kbd> / <kbd>Ctrl+3</kbd></td></tr>
+      <tr><td><span class="tag">fa-filter</span> Filtros</td><td>Abrir painel de filtros (Status, Gêneros, Ano, Ordenação)</td><td>—</td></tr>
+      <tr><td><span class="tag">fa-search</span> Busca</td><td>Alternar barra de pesquisa</td><td><kbd>Ctrl+F</kbd></td></tr>
+      <tr><td><span class="tag">fa-chart-pie</span> Dashboard</td><td>Abrir painel com gráficos e estatísticas do acervo</td><td>—</td></tr>
+      <tr><td><span class="tag">fa-download</span> Exportar</td><td>Baixar backup JSON de todos os dados</td><td><kbd>Ctrl+E</kbd></td></tr>
+      <tr><td><span class="tag">fa-upload</span> Importar</td><td>Importar dados de um arquivo JSON</td><td><kbd>Ctrl+I</kbd></td></tr>
+      <tr><td><span class="tag">fa-clipboard-list</span> Histórico</td><td>Visualizar histórico de cadastros recentes</td><td>—</td></tr>
+      <tr><td><span class="tag">fa-cog</span> Config</td><td>Abrir configurações do sistema</td><td><kbd>Ctrl+,</kbd></td></tr>
+      <tr><td><span class="tag">fa-info-circle</span> Funcionalidades</td><td>Abrir esta lista de funcionalidades com descrições</td><td>—</td></tr>
+      <tr><td><span class="tag">fa-question-circle</span> Manual</td><td>Abrir este manual completo do catálogo (nova janela)</td><td>—</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>3. Cadastro de Filmes e Séries</h2>
+    <p>Clique em <strong>+ NOVO</strong> para abrir o formulário de cadastro. A janela possui duas abas: Filmes e Séries, além da aba de Estreias para lançamentos futuros.</p>
+    
+    <h3>Campos disponíveis</h3>
+    <table>
+      <tr><th>Campo</th><th>Descrição</th><th>Obrigatório</th></tr>
+      <tr><td>Título</td><td>Nome do filme/série em português</td><td>Sim</td></tr>
+      <tr><td>Ano</td><td>Ano de lançamento</td><td>Não</td></tr>
+      <tr><td>Duração</td><td>Duração em minutos ou "1h30min"</td><td>Não</td></tr>
+      <tr><td>Diretor</td><td>Nome do diretor ou showrunner</td><td>Não</td></tr>
+      <tr><td>Elenco</td><td>Lista de atores principais</td><td>Não</td></tr>
+      <tr><td>Sinopse</td><td>Descrição resumida da obra</td><td>Não</td></tr>
+      <tr><td>Gêneros</td><td>Seleção de categoria(s) — gerível nas Configurações</td><td>Não</td></tr>
+      <tr><td>Estrelas</td><td>Avaliação de 0 a 5 estrelas</td><td>Não</td></tr>
+      <tr><td>Status</td><td>Marcadores: Novo, Assistir, Favorito</td><td>Não</td></tr>
+      <tr><td>Link do Filme</td><td>Caminho do arquivo de vídeo no computador <span class="tag">Electron</span></td><td>Não</td></tr>
+      <tr><td>Trailer</td><td>URL do trailer (YouTube, etc.)</td><td>Não</td></tr>
+      <tr><td>Capa</td><td>Upload de imagem (JPG/PNG/WEBP, proporção 9:16, 720x1280px)</td><td>Não</td></tr>
+      <tr><td>Lembrete</td><td>Nota pessoal sobre o item</td><td>Não</td></tr>
+    </table>
+
+    <h3>Modo de Edição</h3>
+    <p>Clique com o botão direito em qualquer card ou use o botão Editar na janela INFO. Os dados são carregados automaticamente nos campos. O botão muda para <strong>ATUALIZAR</strong>.</p>
+
+    <h3>Séries — Cadastro Dinâmico</h3>
+    <p>Na aba Séries, use o botão <strong>CADASTRO DINÂMICO</strong> para criar múltiplas temporadas e episódios de uma só vez. Defina o número de temporadas e a quantidade de episódios por temporada.</p>
+  </div>
+
+  <div class="section">
+    <h2>4. Estreias</h2>
+    <p>A aba <strong>Estreias</strong> permite acompanhar lançamentos futuros e passados. As estreias são ordenadas por data: as futuras aparecem primeiro (da mais próxima para a mais distante), seguidas das passadas (da mais recente para a mais antiga).</p>
+    <ul>
+      <li>Estreias vencidas são removidas automaticamente após 3 dias</li>
+      <li>Notificações pop-up são exibidas no dia da estreia</li>
+      <li>Notificações podem ser ativadas/desativadas nas Configurações</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>5. Pesquisa e Filtros</h2>
+    
+    <h3>Pesquisa Simples</h3>
+    <p>Digite na barra de busca (<kbd>Ctrl+F</kbd>) para filtrar por título, diretor, elenco, sinopse ou género. O resultado é instantâneo e os cards correspondentes ganham um brilho neon laranja.</p>
+
+    <h3>Pesquisa Booleana</h3>
+    <p>Use o operador <code>+</code> para combinar múltiplos termos. Exemplo: <code>ação+2024+willis</code> encontra filmes de ação de 2024 com Bruce Willis.</p>
+
+    <h3>Pesquisa por Voz</h3>
+    <p>Clique no ícone de microfone na barra de busca para ativar a pesquisa por voz (navegadores compatíveis).</p>
+
+    <h3>Filtros</h3>
+    <p>O painel de filtros (ícone <span class="tag">fa-filter</span>) oferece:</p>
+    <ul>
+      <li><strong>Geral</strong>: Todos, Recente, Antigos, Ordenação A-Z</li>
+      <li><strong>Ano</strong>: Filtrar por ano de lançamento</li>
+      <li><strong>Status</strong>: Novo, Assistir, Favoritos</li>
+      <li><strong>Gêneros</strong>: Filtrar por categoria específica</li>
+    </ul>
+    
+    <div class="tip">
+      <strong>Dica:</strong> Use a pesquisa booleana para encontrar combinações específicas. Ex: "terror+2024" mostra apenas filmes de terror de 2024.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>6. Modos de Visualização</h2>
+    <p>Três modos de visualização estão disponíveis:</p>
+    <table>
+      <tr><th>Modo</th><th>Ícone</th><th>Descrição</th></tr>
+      <tr><td><strong>Carrossel</strong></td><td><span class="tag">fa-stream</span></td><td>Rolagem horizontal com scroll infinito. Ideal para navegação rápida.</td></tr>
+      <tr><td><strong>Grelha</strong></td><td><span class="tag">fa-border-all</span></td><td>Grid com separação por categorias. Organização automática por género.</td></tr>
+      <tr><td><strong>Cine Marquee</strong></td><td><span class="tag">fa-play</span></td><td>Linha em destaque com rolagem automática. Efeito cinematográfico.</td></tr>
+      <tr><td><strong>Dinâmico</strong></td><td>(padrão)</td><td>Grid responsivo com lazy loading (carrega 48 cards por vez).</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>7. Gestão de Gêneros</h2>
+    <p>Os gêneros (categorias) podem ser geridos de duas formas:</p>
+    <ul>
+      <li><strong>Botão de engrenagem</strong> (<span class="tag">fa-cog</span>) ao lado do campo Gêneros no formulário de cadastro</li>
+      <li><strong>Configurações → Personalização dos Cards → Gerenciar Gêneros</strong>: Painel completo com input para adicionar e tags para remover gêneros em tempo real</li>
+    </ul>
+    <p>As alterações refletem-se automaticamente em todos os dropdowns do aplicativo, ordenados alfabeticamente.</p>
+  </div>
+
+  <div class="section">
+    <h2>8. Configurações</h2>
+    <p>Acesse pelo ícone <span class="tag">fa-cog</span> na barra superior ou <kbd>Ctrl+,</kbd>. As configurações estão organizadas em seções:</p>
+
+    <table>
+      <tr><th>Seção</th><th>O que configura</th></tr>
+      <tr><td><strong>Logotipo</strong></td><td>URL da imagem do logotipo (SVG/JPG/PNG/WEBP)</td></tr>
+      <tr><td><strong>Acervo Vazio</strong></td><td>Ícone, título e subtítulos exibidos quando não há itens cadastrados</td></tr>
+      <tr><td><strong>Personalização dos Cards</strong></td><td>Cores: estrelas, ano, texto/fundo status, gêneros; gerência de categorias</td></tr>
+      <tr><td><strong>Pré-visualização do Card</strong></td><td>Visualização em tempo real das alterações nos cards</td></tr>
+      <tr><td><strong>Caminhos</strong></td><td>Pastas: Cards, Vídeos, Backups, Acervo Geral (para exportação automática)</td></tr>
+      <tr><td><strong>Auto Salvamento</strong></td><td>Ativar/Desativar salvamento automático com intervalo configurável</td></tr>
+      <tr><td><strong>Notificações de Estreias</strong></td><td>Ativar/Desativar pop-ups de estreias</td></tr>
+      <tr><td><strong>Personalização do Rodapé</strong></td><td>Texto do criador, cores e tamanhos, auto-save, status</td></tr>
+      <tr><td><strong>Cor do Placeholder</strong></td><td>Cor e opacidade do texto placeholder dos inputs</td></tr>
+      <tr><td><strong>Reset Geral</strong></td><td>Apagar todos os dados permanentemente</td></tr>
+      <tr><td><strong>Sugestão de Filmes/Séries</strong></td><td>Ativar sugestão diária com filtros (Novo/Assistir/Favoritos)</td></tr>
+    </table>
+
+    <div class="tip">
+      <strong>Dica:</strong> Use a pré-visualização do card para ver como ficam as cores antes de aplicar. As alterações são salvas automaticamente ao clicar em "APLICAR CONFIGURAÇÕES".
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>9. Dashboard (Estatísticas)</h2>
+    <p>O painel de dashboard apresenta:</p>
+    <ul>
+      <li>Gráfico de distribuição por género (barras horizontais)</li>
+      <li>Gráfico de filmes por ano (barras ou colunas)</li>
+      <li>Totais: filmes, séries, estreias</li>
+      <li>Itens favoritados, novos, para assistir</li>
+      <li>Episódios totais (séries)</li>
+      <li>Gráfico em donut da proporção Filmes vs Séries</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>10. Sugestão do Dia</h2>
+    <p>O sistema pode sugerir um filme ou série aleatório todos os dias. Ative nas Configurações e escolha os filtros desejados:</p>
+    <ul>
+      <li><strong>Novo</strong> — Itens marcados como "Novo"</li>
+      <li><strong>Assistir</strong> — Itens marcados como "Para Assistir"</li>
+      <li><strong>Favoritos</strong> — Itens favoritados</li>
+    </ul>
+    <p>A sugestão aparece automaticamente ao carregar o aplicativo (apenas uma vez por dia). Também pode ser acionada manualmente pelo botão "Nova Sugestão" no modal.</p>
+    <p>Ao clicar em <strong>ASSISTIR</strong>, o filme/série é reproduzido no player padrão do sistema operacional, igual aos cards.</p>
+  </div>
+
+  <div class="section">
+    <h2>11. Execução de Mídia</h2>
+    <p>O CineCatalog Elo suporta reprodução de vídeos diretamente no player padrão do sistema:</p>
+    <ul>
+      <li>Clique no ícone de Play sobre o card ou no botão EXECUTAR na janela INFO</li>
+      <li>No Electron, o arquivo é aberto com o player padrão do Windows (ou sistema configurado)</li>
+      <li>URLs de trailer são abertas no navegador padrão</li>
+      <li>Suporte aos formatos: MP4, AVI, MKV, MOV, WMV, FLV, WEBM</li>
+    </ul>
+    <div class="tip">
+      <strong>Dica:</strong> Configure o caminho da pasta de vídeos em Configurações → Caminhos para abrir o seletor de ficheiros já na pasta correta.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>12. Lembretes</h2>
+    <p>Adicione lembretes personalizados a qualquer filme ou série. Use o botão de notas no card ou na janela INFO. Os lembretes são exibidos no painel combinado (Filmes + Séries juntos) com numeração sequencial e ícone identificador do tipo.</p>
+  </div>
+
+  <div class="section">
+    <h2>13. Backup e Restauro</h2>
+    <ul>
+      <li><strong>Exportar</strong> (<kbd>Ctrl+E</kbd>): Baixa um arquivo JSON com todos os filmes, séries, categorias e configurações de tema</li>
+      <li><strong>Importar</strong> (<kbd>Ctrl+I</kbd>): Substitui todos os dados atuais pelo conteúdo do arquivo JSON selecionado</li>
+      <li>O caminho de backup pode ser configurado em Configurações → Caminhos → Backups</li>
+      <li>No Electron, o exportador tenta usar a pasta de Backups configurada automaticamente</li>
+    </ul>
+    <div class="tip">
+      <strong>Dica:</strong> Faça backups regulares do seu acervo. O auto-salvamento também pode ser configurado para exportar automaticamente para a pasta do acervo.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>14. Auto-salvamento</h2>
+    <p>O sistema pode salvar automaticamente todos os dados em intervalos regulares. Configure:</p>
+    <ul>
+      <li><strong>Ativar/Desativar</strong> em Configurações → Auto Salvamento</li>
+      <li><strong>Pasta do Acervo</strong>: Se configurada, o auto-salvamento também exporta o JSON para essa pasta</li>
+      <li>O indicador no rodapé mostra o status do salvamento automático</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>15. Suporte a Smart TV</h2>
+    <p>O CineCatalog Elo é totalmente funcional em Smart TVs:</p>
+    <ul>
+      <li><strong>Android TV</strong>: Navegação por controle remoto com setas (DPAD), suporte a touch</li>
+      <li><strong>Panasonic Smart TV (WebOS / não Android)</strong>: Interface adaptada para resoluções Full HD (1920x1080)</li>
+      <li>Cards com foco visível (outline laranja) para navegação por teclado/controle</li>
+      <li>Navegação entre cards usando as setas do teclado/controle remoto</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>16. Atalhos de Teclado</h2>
+    <table>
+      <tr><th>Atalho</th><th>Função</th></tr>
+      <tr><td><kbd>Ctrl+1</kbd></td><td>Aba Filmes</td></tr>
+      <tr><td><kbd>Ctrl+2</kbd></td><td>Aba Séries</td></tr>
+      <tr><td><kbd>Ctrl+3</kbd></td><td>Aba Estreias</td></tr>
+      <tr><td><kbd>Ctrl+F</kbd></td><td>Alternar barra de pesquisa</td></tr>
+      <tr><td><kbd>Ctrl+E</kbd></td><td>Exportar backup</td></tr>
+      <tr><td><kbd>Ctrl+I</kbd></td><td>Importar backup</td></tr>
+      <tr><td><kbd>Ctrl+,</kbd></td><td>Abrir Configurações</td></tr>
+      <tr><td><kbd>F11</kbd></td><td>Tela cheia</td></tr>
+      <tr><td><kbd>F12</kbd></td><td>Ferramentas do desenvolvedor (Electron)</td></tr>
+      <tr><td><kbd>Esc</kbd></td><td>Fechar modal / pop-up ativo</td></tr>
+      <tr><td><kbd>&larr;</kbd> <kbd>&rarr;</kbd> <kbd>&uarr;</kbd> <kbd>&darr;</kbd></td><td>Navegar entre cards (Smart TV / teclado)</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>17. Dicas de Uso</h2>
+    <ul>
+      <li><strong>Organização:</strong> Use os status (Novo, Assistir, Favorito) para categorizar o que já viu e o que pretende ver</li>
+      <li><strong>Avaliação:</strong> Atribua estrelas aos filmes que já assistiu para criar um histórico de preferências</li>
+      <li><strong>Pesquisa booleana:</strong> Combine termos com <code>+</code> para pesquisas precisas (ex: <code>ficção+científica+2024</code>)</li>
+      <li><strong>Cadastro rápido:</strong> Use o botão direito do rato sobre um card para opções rápidas de editar, favoritar, lembrete ou eliminar</li>
+      <li><strong>Géneros personalizados:</strong> Crie os seus próprios gêneros nas Configurações — eles aparecem em todos os dropdowns</li>
+      <li><strong>Multi-monitor:</strong> O Electron abre maximizado, adaptando-se a qualquer resolução</li>
+      <li><strong>Atualizações:</strong> Clique no badge de versão no rodapé para verificar se há nova versão disponível no GitHub</li>
+    </ul>
+  </div>
+
+  <hr>
+  <p style="text-align:center;font-size:0.7rem;color:#64748B;margin-top:2rem">CineCatalog Elo v25.9 — ELO SISTEMA E TECNOLOGIA | 2026 — Criado para Jonas Theodoro</p>
+</body>
+</html>
